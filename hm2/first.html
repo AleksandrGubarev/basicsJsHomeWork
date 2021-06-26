@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    'Use strict';
+    //пример 1 
+    let a = 1, b = 1, c, d;
+    c = ++a;
+    alert(c); // ответ: 2 получается из-за префиксного инкримента (мы "а" eвелисили на 1)
+    //пример 2 
+    d = b++;
+    alert(d); //ответ: 1  тут получается такой ответ из-за постфиксного инкримента (сначала присваивается значение b, а потом увеличивается d)
+    //пример 3 
+    c = 2 + ++a;
+    alert(c); //ответ: 5  сначала идет увеличение значения "а" (2+1=3), а потом выполняется сложение 2 + 3 
+    //пример 4 
+    d = 2 + b++;
+    alert(d); //ответ: 4  сначала идет сложение 2 + 2, а уже потом увеличится b
+    alert(a); //3  увеличилость в примере 3
+    alert(b); //3 b увеличилось в примере 4
+  </script>
+</body>
+
+</html>
