@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    'use strict';
+    //a
+    function post(author, text, date) {
+      this.author = author;
+      this.text = text;
+      this.date = date;
+    }
+    post.prototype.edit = function (text) {
+      this.text = text;
+    }
+    const post1 = new post('Александр', 'Lorem, ipsum dolor.', new Date());
+    console.log(post1);
+    post1.edit('Lorem ipsum dolor sit amet.')
+    console.log(post1);
+    //b
+    function AttachedPost(author, text, date) {
+      post.call(this, author, text, date);
+      this.highlighted = false;
+    }
+    AttachedPost.prototype = Object.create(post.prototype);
+    AttachedPost.prototype.constructor = AttachedPost;
+    AttachedPost.prototype.makeTextHighlighted = function () {
+      this.highlighted = true;
+    }
+    const AttechedPost1 = new AttachedPost('Денис', 'Lorem ipsum dolor sit amet consectetur.', new Date);
+    AttechedPost1.makeTextHighlighted();
+    console.log(AttechedPost1);
+    AttechedPost1.edit('Lorem ipsum dolor sit amet consectetur.111');
+    console.log(AttechedPost1);
+  </script>
+  <!-- Lorem ipsum dolor sit amet consectetur.
+  Lorem ipsum dolor sit amet.
+  Lorem, ipsum dolor. -->
+</body>
+
+</html>
